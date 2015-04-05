@@ -12,11 +12,16 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSMutableArray *items = [[NSMutableArray alloc] init];
-        for (int i = 0; i <10; i++) {
-            YWItem *item = [YWItem randomItem];
-            [items addObject:item];
-        }
+        YWItem *backpack = [[YWItem alloc] initWithItemName:@"Backpack"];
+        [items addObject:backpack];
         
+        YWItem *calculator = [[YWItem alloc] initWithItemName:@"Calculator"];
+        [items addObject:calculator];
+        
+        backpack.containedItem = calculator;
+        
+        backpack = nil;
+        calculator = nil;
         
         for(YWItem *item in items){
             NSLog(@"%@", item);
